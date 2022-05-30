@@ -1,0 +1,39 @@
+label{
+    color: black;
+    font-weight: bold;
+    font-size: medium;
+}
+.container{
+    max-width: 800px;
+    margin: 40px auto;
+    text-transform: capitalize;
+    
+}
+h1{
+    color: aliceblue;
+}
+form{
+    border: 1px solid white;
+    padding: 5px;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: -3px 0px 7px 12px #50b4e2e8;
+}
+.form-group-button{
+    margin: 2px auto;
+    display: flex;
+    justify-content: center;
+}
+.subbtn{
+    display: flex;
+    justify-content: center;
+}
+.btn-primary{
+    background-color: #252927;
+    border: none;
+    color: aliceblue;
+    font-weight: 800;
+}
+.btn-primary:hover{
+    background-color: black;
+}

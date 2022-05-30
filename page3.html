@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="style.css"> 
+
+        <title>Uploading Documents</title>
+        <style>
+            .row{
+                max-width: 800px;
+                margin: 40px auto;
+            }
+        </style>
+    </head>
+
+    <body style="background-color: #92a2b3e3;">
+        <script>
+            FileValidation = () => {
+                    let fi = document.getElementById('image');
+                 // Check if any file is selected.
+                if (fi.files.length > 0) {
+                    for (const i = 0; i <= fi.files.length - 1; i++) {
+         
+                        const fsize = fi.files.item(i).size;
+                        const file = Math.round((fsize / 1024));
+                        // The size of the file.
+                        if (file >= 4096) {
+                            // document.getElementById('ma').src='';
+                            // console.log(document.getElementById('image'));
+                            fi.files[0]='';
+                            console.log(fi.files[0]);
+                             alert(
+                              "Large file, please select a file less than 4mb");
+                        } else if (file < 1024) {
+                            alert(
+                              "Small file, please select a file greater than 1mb");
+                        } else {
+                            document.getElementById('size').innerHTML = '<b>'
+                            + file + '</b> KB';
+                        }
+                    }
+                }
+        
+        
+        let pass,hscmark,sscmark,semmark ;
+            image=document.getElementById("image").value;
+            hscmarksheet=document.getElementById("hscmark").value;
+            sscmarksheet=document.getElementById("sscmark").value;
+            semmarksheet=document.getElementById("semmark").value;
+            
+        
+        let user_records=new Array();
+        user_records=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+        
+        user_records.push({
+        "image":image,
+        "hscmark":hscmarksheet,
+        "sscmark":sscmarksheet,
+        "semmark":semmarksheet
+        })
+        localStorage.setItem("users",JSON.stringify(user_records));
+        }
+    </script>
+    <div class="row">
+        <div class="col-md-12">
+            <form action="" method="post" onsubmit="OnFilevalidation()">
+                <h3>BLOCK-C</h3>
+                <!-- Recent passport size photograph -->
+                <div class="form-group">
+                    <label for="name">Recent passport size photograph(size less then 4MB)* </label>
+                    <input type="file" class="form-control" id="image" onchange="OnFilevalidation()" name="passport" placeholder="" required />
+                </div>
+                <!-- HSC mark sheet -->
+                <div class="form-group">
+                    <label for="name">HSC mark sheet(size less then 4MB)* </label>
+                    <input type="file" class="form-control" id="hscmark" onchange="OnFilevalidation()" name="hscmarksheet" placeholder="" required  />
+                </div>
+                <!-- SSC mark sheet -->
+                <div class="form-group">
+                    <label for="name">SSC mark sheet(size less then 4MB)* </label>
+                    <input type="file" class="form-control" id="sscmark" onchange="OnFilevalidation()" name="sscmarksheet" placeholder="" required />
+                </div>
+                <!-- All semesters mark sheet -->
+                <div class="form-group">
+                    <label for="name">All semesters mark sheet(size less then 4MB)* </label>
+                    <input type="file" class="form-control" id="semmark" onchange="OnFilevalidation()" name="allmarksheet" placeholder="" required />
+                </div>
+                <div class="subbtn">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
